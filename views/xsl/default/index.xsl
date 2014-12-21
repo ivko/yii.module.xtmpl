@@ -1,5 +1,25 @@
-<xsl:include href="protected/xsl/layout.xsl"/>
-<xsl:template match="head">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xsl:stylesheet [
+    <!ENTITY % HTMLsymbol PUBLIC
+    "-//W3C//ENTITIES Symbols for XHTML//EN"
+    "../_shared/xhtml-symbol.ent">
+    <!ENTITY % HTMLspecial PUBLIC
+    "-//W3C//ENTITIES Special for XHTML//EN"
+    "../_shared/xhtml-special.ent">
+    <!ENTITY % HTMLlat1 PUBLIC
+    "-//W3C//ENTITIES Special for XHTML//EN"
+    "../_shared/xhtml-lat1.ent">
+      %HTMLspecial;
+      %HTMLlat1;
+      %HTMLsymbol;
+    ]>
+<xsl:stylesheet version='1.0' xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:exsl='http://exslt.org/common' extension-element-prefixes='exsl'>
+    <xsl:output
+        method="html"
+        encoding="utf-8"
+        omit-xml-declaration="yes"
+        indent="yes"/>
+    <xsl:template match="head">
 <!-- link src="/test/"></link-->
 </xsl:template>
 
@@ -51,7 +71,7 @@ Is sample get ==>
   </param>
 </tmpl>
 <tmpl type="form.label"><!--  mapping values to context controller -->
-  <param name="label" type="context">test.form.labels.mask|uppercase</param>
+  <param name="label" type="context">test.form.labels.mask||uppercase</param>
   <param name="for">mask</param>
 </tmpl>
 
@@ -91,7 +111,7 @@ My tab 2 ...
 
 <!-- start tabs with clip content -->
 <tmpl type="widget.system.web.widgets.CTabView">
-  <param name="tabs" type="context">clips|createArray count='tab' key='title' value='content'</param>
+  <param name="tabs" type="context">clips||createArray count='tab' key='title' value='content'</param>
 </tmpl>
 
 <tmpl type="form.endForm"/>
@@ -101,7 +121,7 @@ My tab 2 ...
   <p>caching test</p>
 </cache>
 
-<table cellspacing="1" cellpadding="5" border="0" align="center" width="1000">
+<!--table cellspacing="1" cellpadding="5" border="0" align="center" width="1000">
   <thead>
     <tr>
       <th rowspan="2">
@@ -132,7 +152,7 @@ My tab 2 ...
   <tbody>
     <xsl:apply-templates select="rows"/>
   </tbody>
-</table>
+</table-->
 </xsl:template>
 
 <xsl:template match="rows">
@@ -182,3 +202,4 @@ My tab 2 ...
   </td>
 </tr>
 </xsl:template>
+</xsl:stylesheet>
